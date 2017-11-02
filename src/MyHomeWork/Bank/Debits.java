@@ -2,8 +2,8 @@ package MyHomeWork.Bank;
 
 public class Debits extends Bills {
     // Конструктор класса дебитного счета
-    public Debits(double currency, int numberBill) {
-        super(currency, numberBill);
+    public Debits(double currency, double percent, int numberBill) {
+        super(currency, percent, numberBill);
     }
 
     public void Refill(double quantity) {
