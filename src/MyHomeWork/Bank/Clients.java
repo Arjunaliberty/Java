@@ -3,12 +3,12 @@ package MyHomeWork.Bank;
 public class Clients {
     private String name;
     private String surname;
-    private int passnumber;
+    private int passNumber;
 
-    public Clients( String name, String surname, int passnumber) {
+    public Clients( String name, String surname, int passNumber) {
         this.name = name;
         this.surname = surname;
-        this.passnumber = passnumber;
+        this.passNumber = passNumber;
     }
 
     public String getName() {
@@ -27,12 +27,12 @@ public class Clients {
         this.surname = surname;
     }
 
-    public int getPassnumber() {
-        return passnumber;
+    public int getPassNumber() {
+        return passNumber;
     }
 
-    public void setPassnumber(int passnumber) {
-        this.passnumber = passnumber;
+    public void setPassNumber(int passNumber) {
+        this.passNumber = passNumber;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Clients {
         return "Client{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", passnumber=" + passnumber +
+                ", passnumber=" + passNumber +
                 '}';
     }
 }
