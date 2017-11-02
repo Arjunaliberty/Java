@@ -1,11 +1,11 @@
 package MyHomeWork.Bank;
 
-public class Client {
+public class Clients {
     private String name;
     private String surname;
     private int passnumber;
 
-    public Client( String name, String surname, int passnumber) {
+    public Clients( String name, String surname, int passnumber) {
         this.name = name;
         this.surname = surname;
         this.passnumber = passnumber;
