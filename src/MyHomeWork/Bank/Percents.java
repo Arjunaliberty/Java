@@ -1,38 +1,46 @@
 package MyHomeWork.Bank;
 
-public class Percents extends Bills {
+public class Percents extends Accounts {
 
-    Percents(double currency, double percent, int numberBill) {
-        super(currency, percent, numberBill);
+    Percents(int numberAccount, double currency, double percent, int amountDay, Currency coin) {
+        super(numberAccount, currency, percent, amountDay, coin);
     }
 
-    // Метод для вычисления состояния счета по фиксированному проценту за месяц
+    // Метод для пополнения счета на фиксированный процент за 30 дней
     public void PercentProfit() {
-        this.currency += this.currency * (this.percent / 100);
+        if (this.amountDay % 30 == 29) {
+            this.currency += this.currency * (this.percent / 100);
+        }
     }
 
+    @Override
     public void Refill(double quantity) {
         this.currency += quantity ;
     }
 
+    @Override
     public void Withdraw(double quantity) {
         if(this.currency >= quantity) {
             this.currency -= quantity;
         }
     }
 
-    public void Transfer(Bills bill, double quantity) {
+    @Override
+    public void Transfer(Accounts accounts, double quantity) {
         if(this.currency >= quantity) {
-            bill.currency += quantity;
             this.currency -= quantity;
+            accounts.currency += quantity;
         }
     }
 
     @Override
     public String toString() {
         return "Percents{" +
-                "currency=" + currency +
-                ", numberBill=" + numberBill +
+                "numberAccount=" + numberAccount +
+                ", currency=" + currency +
+                ", percent=" + percent +
+                ", amountDay=" + amountDay +
+                ", coin=" + coin +
                 '}';
     }
 }
