@@ -18,11 +18,11 @@ public class Credits extends Accounts {
 
     @Override
     public void Withdraw(double quantity) {
-        if(this.currency >= quantity && this.currency > 0) {
+        if(this.currency >= quantity) {
             this.currency -= quantity;
-        } else if(this.currency < 0){
-            this.currency -= quantity;
+        } else if((this.currency > 0 && this.currency < quantity) || (this.currency < 0)){
             decreaseCurrency(quantity);
+            this.currency -= quantity;
         }
     }
 
@@ -31,10 +31,10 @@ public class Credits extends Accounts {
         if(this.currency >= quantity) {
             this.currency -= quantity;
             accounts.currency += quantity;
-        } else if(this.currency < 0){
-            this.currency -= quantity;
-            accounts.currency += quantity;
+        } else if((this.currency > 0 && this.currency < quantity) || (this.currency < 0)){
             decreaseCurrency(quantity);
+            accounts.currency += quantity;
+            this.currency -= quantity;
         }
     }
 
