@@ -6,13 +6,15 @@ public class Clients {
     private int passNumber;
     private Accounts[] accounts;
     private Actions[] actions;
+    private  Metalls[] metalls;
 
-    public Clients( String name, String surname, int passNumber, Accounts[] accounts, Actions[] actions) {
+    public Clients( String name, String surname, int passNumber, Accounts[] accounts, Actions[] actions, Metalls[] metalls) {
         this.name = name;
         this.surname = surname;
         this.passNumber = passNumber;
         this.accounts = accounts;
         this.actions = actions;
+        this.metalls = metalls;
     }
 
     public String getName() {
@@ -39,14 +41,29 @@ public class Clients {
         this.passNumber = passNumber;
     }
 
-    public Accounts[] getAccounts() { return accounts; }
+    public Accounts[] getAccounts() {
+        return accounts;
+    }
 
-    public void setAccounts(Accounts[] accounts) { this.accounts = accounts; }
+    public void setAccounts(Accounts[] accounts) {
+        this.accounts = accounts;
+    }
 
-    public Actions[] getActions() { return actions; }
+    public Actions[] getActions() {
+        return actions;
+    }
 
-    public void setActions(Actions[] actions) { this.actions = actions; }
+    public void setActions(Actions[] actions) {
+        this.actions = actions;
+    }
 
+    public Metalls[] getMetalls() {
+        return metalls;
+    }
+
+    public void setMetalls(Metalls[] metalls) {
+        this.metalls = metalls;
+    }
 
     @Override
     public String toString() {
