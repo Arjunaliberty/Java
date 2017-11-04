@@ -23,7 +23,7 @@ public abstract class Accounts {
     public Accounts() {
         this.numberAccount = 0;
         this.currency = 0;
-        this.percent = 0;
+        this.percent = 1;
         this.amountDay = 0;
         this.coin = null;
     }

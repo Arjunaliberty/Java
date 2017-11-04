@@ -2,13 +2,14 @@ package MyHomeWork.Bank;
 
 public class Credits extends Accounts {
 
-    Credits(int numberAccount, double currency, double percent, int amountDay, Currency coin) {
+    public Credits(int numberAccount, double currency, double percent, int amountDay, Currency coin) {
+
         super(numberAccount, currency, percent, amountDay, coin);
     }
 
     // Метод для сняти процента с суммы вклада
     private void decreaseCurrency(double quantity) {
-        this.currency -= quantity * (this.percent/100);
+        this.currency -= quantity * this.percent;
     }
 
     @Override

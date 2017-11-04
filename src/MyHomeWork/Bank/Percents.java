@@ -2,14 +2,14 @@ package MyHomeWork.Bank;
 
 public class Percents extends Accounts {
 
-    Percents(int numberAccount, double currency, double percent, int amountDay, Currency coin) {
+    public Percents(int numberAccount, double currency, double percent, int amountDay, Currency coin) {
         super(numberAccount, currency, percent, amountDay, coin);
     }
 
     // Метод для пополнения счета на фиксированный процент за 30 дней
     public void PercentProfit() {
         if (this.amountDay % 30 == 29) {
-            this.currency += this.currency * (this.percent / 100);
+            this.currency += this.currency * this.percent;
         }
     }
 
