@@ -15,7 +15,7 @@ public abstract class Accounts implements ICommission{
     protected double currency;
     // Поле для хранения фиксированного процента по вкладу
     protected double percent;
-    // Поле для хранения количества дней со дня создания счета
+    // Поле для хранения количества дней со дня создания счета, лучше сделать через дату
     protected int amountDay;
     // Поле для хранения типа валюты
     protected Currency coin;
@@ -82,6 +82,7 @@ public abstract class Accounts implements ICommission{
         for (int i = 0; i < Currency.values().length; i++){
             switch (coin.ordinal()){
                 case 0:
+                    // Условие нужно переделать через дату
                     if (this.amountDay % 30 == 29) {
                         this.currency -= this.currency * 0.02;
                         // Еще бы не забыть ввести переменную для хранения взятой комиссии с данного счета
