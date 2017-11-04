@@ -7,7 +7,7 @@ enum Currency {
     BYN
 }
 
-public abstract class Accounts {
+public abstract class Accounts implements ICommission{
 
     // Поле для хранения номера счета
     protected  int numberAccount;
@@ -74,6 +74,36 @@ public abstract class Accounts {
 
     public void setCoin(Currency coin) {
         this.coin = coin;
+    }
+
+    // Реализация методля за вычисления комиссии со счтета от интрефейса ICommission
+    @Override
+    public void Commission(){
+        for (int i = 0; i < Currency.values().length; i++){
+            switch (Currency.values()[i].ordinal()){
+                case 0:
+                    if (this.amountDay % 30 == 29) {
+                        this.currency -= this.currency * 0.02;
+                        // Еще бы не забыть ввести переменную для хранения взятой комиссии с данного счета
+                    }
+                    break;
+                case 1:
+                    if (this.amountDay % 30 == 29) {
+                        this.currency -= this.currency * 0.02;
+                    }
+                    break;
+                case 2:
+                    if (this.amountDay % 30 == 29) {
+                        this.currency -= this.currency * 0.5;
+                    }
+                    break;
+                case 3:
+                    if (this.amountDay % 30 == 29) {
+                        this.currency -= this.currency * 0.01;
+                    }
+                    break;
+            }
+        }
     }
 
     // Абстрактный метод для пополнения счета деньгами
