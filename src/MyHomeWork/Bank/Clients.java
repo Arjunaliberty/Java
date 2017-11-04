@@ -4,11 +4,15 @@ public class Clients {
     private String name;
     private String surname;
     private int passNumber;
+    private Accounts[] accounts;
+    private Actions[] actions;
 
-    public Clients( String name, String surname, int passNumber) {
+    public Clients( String name, String surname, int passNumber, Accounts[] accounts, Actions[] actions) {
         this.name = name;
         this.surname = surname;
         this.passNumber = passNumber;
+        this.accounts = accounts;
+        this.actions = actions;
     }
 
     public String getName() {
@@ -35,6 +39,15 @@ public class Clients {
         this.passNumber = passNumber;
     }
 
+    public Accounts[] getAccounts() { return accounts; }
+
+    public void setAccounts(Accounts[] accounts) { this.accounts = accounts; }
+
+    public Actions[] getActions() { return actions; }
+
+    public void setActions(Actions[] actions) { this.actions = actions; }
+
+
     @Override
     public String toString() {
         return "Client{" +
@@ -43,4 +56,6 @@ public class Clients {
                 ", passnumber=" + passNumber +
                 '}';
     }
+
+
 }

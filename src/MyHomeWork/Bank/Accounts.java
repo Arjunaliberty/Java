@@ -80,7 +80,7 @@ public abstract class Accounts implements ICommission{
     @Override
     public void Commission(){
         for (int i = 0; i < Currency.values().length; i++){
-            switch (Currency.values()[i].ordinal()){
+            switch (coin.ordinal()){
                 case 0:
                     if (this.amountDay % 30 == 29) {
                         this.currency -= this.currency * 0.02;

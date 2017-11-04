@@ -9,12 +9,12 @@ public class Bank {
     // поле для хранения id банка
     private int bankId;
     // Поле для хранения счетов клиентов
-    private Accounts[] account;
+    private Clients[] clients;
 
-    public Bank(String nameBank, int bankId, Accounts[] account) {
+    public Bank(String nameBank, int bankId, Clients[] clients) {
         this.nameBank = nameBank;
         this.bankId = bankId;
-        this.account = account;
+        this.clients = clients;
     }
 
 
@@ -34,12 +34,12 @@ public class Bank {
         this.bankId = bankId;
     }
 
-    public Accounts[] getAccount() {
-        return account;
+    public Clients[] getClients() {
+        return clients;
     }
 
-    public void setAccount(Accounts[] account) {
-        this.account = account;
+    public void setClients(Clients[] clients) {
+        this.clients = clients;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Bank {
         return "Bank{" +
                 "nameBank='" + nameBank + '\'' +
                 ", bankId=" + bankId +
-                ", account=" + Arrays.toString(account) +
+                ", clients=" + Arrays.toString(clients) +
                 '}';
     }
 }
