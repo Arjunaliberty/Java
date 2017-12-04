@@ -1,4 +1,4 @@
-package MyHomeWork.Bank;
+package java;
 
 public class Actions implements ICommission{
 

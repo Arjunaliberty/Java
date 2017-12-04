@@ -1,4 +1,4 @@
-package MyHomeWork.Bank;
+package java;
 
 public interface ICommission {
     // Метод для определения комиссии счета

@@ -1,4 +1,4 @@
-package MyHomeWork.Bank;
+package java;
 
 enum Mettal {
     Silver,

@@ -1,4 +1,4 @@
-package MyHomeWork.Bank;
+package java;
 
 public class Debits extends Accounts {
     // Конструктор класса дебитного счета
