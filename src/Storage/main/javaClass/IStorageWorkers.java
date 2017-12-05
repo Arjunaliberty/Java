@@ -1,16 +1,16 @@
-package java;
+package javaClass;
 
 public interface IStorageWorkers {
 
     /**
      * Добавить информацию о работнике
      */
-    void AddInfoWorker();
+    void AddInfoWorker(Worker worker);
 
     /**
      * Удалить информацию о работнике
      */
-    void RemoveInfoWorker();
+    void RemoveInfoWorker(int id);
 
     /**
      * Изменить информацию о работнике

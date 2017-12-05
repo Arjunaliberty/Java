@@ -1,17 +1,17 @@
-package java;
+package javaClass;
 
 public class StorageWorkersXML implements IStorageWorkers {
 
-
+    public StorageWorkersXML(){}
 
 
     @Override
-    public void AddInfoWorker() {
+    public void AddInfoWorker(Worker worker) {
 
     }
 
     @Override
-    public void RemoveInfoWorker() {
+    public void RemoveInfoWorker(int id) {
 
     }
 
