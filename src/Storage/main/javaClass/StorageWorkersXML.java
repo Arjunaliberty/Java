@@ -1,6 +1,9 @@
 package javaClass;
 
+import java.util.ArrayList;
+
 public class StorageWorkersXML implements IStorageWorkers {
+
 
     public StorageWorkersXML(){}
 
@@ -16,12 +19,14 @@ public class StorageWorkersXML implements IStorageWorkers {
     }
 
     @Override
-    public void ChangeInfoWorker() {
+    public void ChangeInfoWorker(Worker worker, Worker replace) {
 
     }
 
     @Override
-    public void SearchSurnameWorker() {
+    public  ArrayList<Worker> SearchSurnameWorker(String surName) {
+        ArrayList<Worker> searchWorker = null;
 
+        return searchWorker;
     }
 }

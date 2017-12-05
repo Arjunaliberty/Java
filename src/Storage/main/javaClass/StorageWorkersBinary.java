@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class StorageWorkersBinary implements IStorageWorkers {
 
-    private static final String  separator = System.getProperty("file.separator");
+    private static final String separator = System.getProperty("file.separator");
     private static final String fileName = "worker.bin";
     private static final String directoryName = System.getProperty("user.dir") +
                                                 separator + "src" + separator + "Storage" + separator +
@@ -74,6 +74,7 @@ public class StorageWorkersBinary implements IStorageWorkers {
         try {
             if (!directory.isFile()){
                 directory.createNewFile();
+                sendList();
             }
         }
         catch (IOException e) {
@@ -83,6 +84,7 @@ public class StorageWorkersBinary implements IStorageWorkers {
 
     /**
      * Добавляет нового рабочего в колеекцию workerList
+     * @param worker Параметр типа Worker
      */
     @Override
     public void AddInfoWorker(Worker worker) {
@@ -93,31 +95,65 @@ public class StorageWorkersBinary implements IStorageWorkers {
 
     /**
      * Удаляет рабочего из колеекции workerList
+     * @param id Идентификатор работника
      */
     @Override
     public void RemoveInfoWorker(int id) {
+        // Удаляемый объект
+        Worker delWorker = null;
+
+        isFile();
         loadList();
         for (Worker worker : workerList) {
             if(worker.getId() == id){
-                workerList.remove(worker);
+                delWorker = worker;
             }
+        }
+        if (delWorker != null) workerList.remove(delWorker);
+        sendList();
+    }
+
+    /**
+     * Изменяет информацию о рабочем в коллекции workerList
+     * @param initial Исходный объект типа Worker
+     * @param replace Объект типа Worker на который необходимо заменить
+     */
+    @Override
+    public void ChangeInfoWorker(Worker initial, Worker replace) {
+        Worker replaceWorker = null;
+
+        isFile();
+        loadList();
+        for (Worker worker : workerList) {
+            if (worker.equals(initial)) {
+                replaceWorker = worker;
+            }
+        }
+        if (replaceWorker != null){
+            workerList.set(workerList.indexOf(replaceWorker), replace);
         }
         sendList();
     }
 
     /**
-     * Изменяет информацию о рабочем в колеекции workerList
-     */
-    @Override
-    public void ChangeInfoWorker() {
-
-    }
-
-    /**
      * Ищет в колеекции workerList работника по фамилии
+     * @param findSurName Объек типа String с искомой фамилией
+     * @return Список типа ArrayList<Worker> со всеми найденными совпадениями
      */
     @Override
-    public void SearchSurnameWorker() {
+    public ArrayList<Worker> SearchSurnameWorker(String findSurName) {
+        // Коллекция для храннения найденных по фамилии рабочих
+        ArrayList<Worker> searchWorker = new ArrayList<>();
 
+        isFile();
+        loadList();
+
+        for (Worker worker : workerList) {
+           if (findSurName.equals(worker.getSurName())) {
+             searchWorker.add(worker);
+           }
+        }
+
+        return searchWorker;
     }
 }

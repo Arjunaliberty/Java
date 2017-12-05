@@ -91,7 +91,8 @@ public class Worker implements Serializable {
     @Override
     public String toString() {
         return "Worker{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", surName='" + surName + '\'' +
                 ", age=" + age +
                 ", departments='" + departments + '\'' +

@@ -1,5 +1,7 @@
 package javaClass;
 
+import java.util.ArrayList;
+
 public interface IStorageWorkers {
 
     /**
@@ -15,10 +17,10 @@ public interface IStorageWorkers {
     /**
      * Изменить информацию о работнике
      */
-    void ChangeInfoWorker();
+    void ChangeInfoWorker(Worker worker, Worker replace);
 
     /**
      * Найти работника по фамилии
      */
-    void SearchSurnameWorker();
+    ArrayList<Worker> SearchSurnameWorker(String surName);
 }
