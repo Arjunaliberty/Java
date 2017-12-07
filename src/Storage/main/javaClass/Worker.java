@@ -1,7 +1,15 @@
 package javaClass;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
+// Определяем корневой элемент
+@XmlRootElement(name = "Worker")
+// Определяем последовательность элементов в xml
+@XmlType(propOrder = {"name", "surName", "age", "departments", "salary", "premium"})
 public class Worker implements Serializable {
 
     private int id;
@@ -11,6 +19,11 @@ public class Worker implements Serializable {
     private String departments;
     private double salary;
     private double premium;
+
+    /**
+     * Конструктор без параметров
+     */
+    public  Worker(){}
 
     /**
      * Конструктор
@@ -32,14 +45,17 @@ public class Worker implements Serializable {
         this.premium = premium;
     }
 
+    // Указываем, что поле id будет использоваться как аттрибут
+    @XmlAttribute
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
 
+    // Определяем элемет name
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -48,6 +64,8 @@ public class Worker implements Serializable {
         this.name = name;
     }
 
+    // Определяем элемет surName
+    @XmlElement
     public String getSurName() {
         return surName;
     }
@@ -56,6 +74,8 @@ public class Worker implements Serializable {
         this.surName = surName;
     }
 
+    // Определяем элемет age
+    @XmlElement
     public int getAge() {
         return age;
     }
@@ -64,6 +84,8 @@ public class Worker implements Serializable {
         this.age = age;
     }
 
+    // Определяем элемет departments
+    @XmlElement
     public String getDepartments() {
         return departments;
     }
@@ -72,6 +94,8 @@ public class Worker implements Serializable {
         this.departments = departments;
     }
 
+    // Определяем элемет salary
+    @XmlElement
     public double getSalary() {
         return salary;
     }
@@ -80,25 +104,14 @@ public class Worker implements Serializable {
         this.salary = salary;
     }
 
+    // Определяем элемет premium
+    @XmlElement
     public double getPremium() {
         return premium;
     }
 
     public void setPremium(double premium) {
         this.premium = premium;
-    }
-
-    @Override
-    public String toString() {
-        return "Worker{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
-                ", age=" + age +
-                ", departments='" + departments + '\'' +
-                ", salary=" + salary +
-                ", premium=" + premium +
-                '}';
     }
 
     @Override
@@ -115,5 +128,18 @@ public class Worker implements Serializable {
         if (name != null ? !name.equals(worker.name) : worker.name != null) return false;
         if (surName != null ? !surName.equals(worker.surName) : worker.surName != null) return false;
         return departments != null ? departments.equals(worker.departments) : worker.departments == null;
+    }
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", age=" + age +
+                ", departments='" + departments + '\'' +
+                ", salary=" + salary +
+                ", premium=" + premium +
+                '}';
     }
 }

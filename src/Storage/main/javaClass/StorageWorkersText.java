@@ -15,7 +15,6 @@ public class StorageWorkersText implements IStorageWorkers {
     private static final String directoryName = System.getProperty("user.dir") +
             separator + "src" + separator + "Storage" + separator +
             "main" + separator + "resourse" + separator;
-    private static File directory = null;
     private ArrayList<Worker> workerList = null;
 
     /**
@@ -182,5 +181,22 @@ public class StorageWorkersText implements IStorageWorkers {
         }
 
         return searchWorker;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StorageWorkersText that = (StorageWorkersText) o;
+
+        return workerList != null ? workerList.equals(that.workerList) : that.workerList == null;
+    }
+
+    @Override
+    public String toString() {
+        return "StorageWorkersText{" +
+                "workerList=" + workerList +
+                '}';
     }
 }
