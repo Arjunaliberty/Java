@@ -3,6 +3,10 @@ package javaClass;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Класс - хранилище объктов типа Worker
+ * в качестве базы данных использующий бинарный файл worker.bin
+ */
 public class StorageWorkersBinary implements IStorageWorkers {
 
     private static final String separator = System.getProperty("file.separator");
@@ -10,7 +14,6 @@ public class StorageWorkersBinary implements IStorageWorkers {
     private static final String directoryName = System.getProperty("user.dir") +
                                                 separator + "src" + separator + "Storage" + separator +
                                                 "main" + separator + "resourse" + separator;
-    private static File directory = null;
     private ArrayList<Worker> workerList = null;
 
     /**
@@ -20,14 +23,27 @@ public class StorageWorkersBinary implements IStorageWorkers {
         this.workerList = workerList;
     }
 
-    public ArrayList<Worker> getWorkerList() {
-        return workerList;
+    /**
+     * Проверяет существования файла в директории
+     * и если его не существует, то создает
+     */
+    private void fileExist(){
+        File file = new File(directoryName + fileName);
+
+        try {
+            if (!file.isFile()){
+                file.createNewFile();
+            }
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
      * Загружает данные из файла в коллекцию workerList
      */
-    private void loadList(){
+    private void loadFrom(){
         workerList = new ArrayList<Worker>();
 
         try (FileInputStream fis = new FileInputStream(directoryName + fileName)){
@@ -46,9 +62,9 @@ public class StorageWorkersBinary implements IStorageWorkers {
     }
 
     /**
-     * Занружает данные в файл из коллекции workerList
+     * Загружает данные в файл из коллекции workerList
      */
-    private void sendList(){
+    private void sendTo(){
 
         try(FileOutputStream fos = new FileOutputStream(directoryName + fileName)) {
 
@@ -65,21 +81,11 @@ public class StorageWorkersBinary implements IStorageWorkers {
     }
 
     /**
-     * Проверяет существования файла в директории
-     * и если его не существует, то создает
+     * Возвращает коллектцию типа List<Worker>
+     * @return Коллекция типа List<Worker>
      */
-    private void isFile(){
-        directory = new File(directoryName + fileName);
-
-        try {
-            if (!directory.isFile()){
-                directory.createNewFile();
-                sendList();
-            }
-        }
-        catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public ArrayList<Worker> getWorkerList() {
+        return workerList;
     }
 
     /**
@@ -88,9 +94,9 @@ public class StorageWorkersBinary implements IStorageWorkers {
      */
     @Override
     public void AddInfoWorker(Worker worker) {
-        isFile();
+        fileExist();
         workerList.add(worker);
-        sendList();
+        sendTo();
     }
 
     /**
@@ -102,15 +108,15 @@ public class StorageWorkersBinary implements IStorageWorkers {
         // Удаляемый объект
         Worker delWorker = null;
 
-        isFile();
-        loadList();
+        fileExist();
+        loadFrom();
         for (Worker worker : workerList) {
             if(worker.getId() == id){
                 delWorker = worker;
             }
         }
         if (delWorker != null) workerList.remove(delWorker);
-        sendList();
+        sendTo();
     }
 
     /**
@@ -122,8 +128,8 @@ public class StorageWorkersBinary implements IStorageWorkers {
     public void ChangeInfoWorker(Worker initial, Worker replace) {
         Worker replaceWorker = null;
 
-        isFile();
-        loadList();
+        fileExist();
+        loadFrom();
         for (Worker worker : workerList) {
             if (worker.equals(initial)) {
                 replaceWorker = worker;
@@ -132,7 +138,7 @@ public class StorageWorkersBinary implements IStorageWorkers {
         if (replaceWorker != null){
             workerList.set(workerList.indexOf(replaceWorker), replace);
         }
-        sendList();
+        sendTo();
     }
 
     /**
@@ -145,8 +151,8 @@ public class StorageWorkersBinary implements IStorageWorkers {
         // Коллекция для храннения найденных по фамилии рабочих
         ArrayList<Worker> searchWorker = new ArrayList<>();
 
-        isFile();
-        loadList();
+        fileExist();
+        loadFrom();
 
         for (Worker worker : workerList) {
            if (findSurName.equals(worker.getSurName())) {
